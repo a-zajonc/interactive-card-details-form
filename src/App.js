@@ -4,7 +4,7 @@ import { CardDetails } from "./components";
 function App() {
   return (
     <ChakraProvider>
-      <Box bgImg="bg-main-desktop.png" backgroundRepeat="repeat-y" h="100vh">
+      <Box bgImg="bg-main-desktop.png" backgroundRepeat="repeat-y">
         <CardDetails />
       </Box>
     </ChakraProvider>
