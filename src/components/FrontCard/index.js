@@ -12,13 +12,19 @@ export function FrontCard() {
         top="10%"
         left="8%"
       />
-      <Text position="absolute" top="65%" left="8%">
+      <Text fontSize="33px" position="absolute" top="50%" left="8%" right="8%">
         0000 0000 0000 0000
       </Text>
-      <Text position="absolute" top="85%" left="8%">
+      <Text
+        fontSize="18px"
+        textTransform="uppercase"
+        position="absolute"
+        top="80%"
+        left="8%"
+      >
         Jane Appleseed
       </Text>
-      <Text position="absolute" top="85%" right="8%">
+      <Text position="absolute" top="80%" right="8%">
         00/00
       </Text>
     </Box>
