@@ -5,9 +5,16 @@ import { Box } from "@chakra-ui/react";
 
 export function CardDetails() {
   return (
-    <Box display="flexbox" flexDirection="column">
-      <FrontCard />
-      <BackCard />
+    <Box
+      display="flex"
+      justifyContent="space-evenly"
+      alignItems="center"
+      h="100vh"
+    >
+      <Box>
+        <FrontCard />
+        <BackCard />
+      </Box>
       <CardForm />
     </Box>
   );
