@@ -1,9 +1,10 @@
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { CardDetails } from "./components";
 
 function App() {
   return (
     <ChakraProvider>
-      <Box>Interactive Card Details</Box>
+      <CardDetails />
     </ChakraProvider>
   );
 }
