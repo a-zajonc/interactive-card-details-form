@@ -2,6 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  fonts: {
+    heading: "Space Grotesk",
+    body: "Space Grotesk",
+  },
+});
+
+export default theme;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
