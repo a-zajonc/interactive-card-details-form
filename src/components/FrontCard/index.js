@@ -1,3 +1,5 @@
+import { Box } from "@chakra-ui/react";
+
 export function FrontCard() {
-  return "FrontCard";
+  return <Box>FrontCard</Box>;
 }

@@ -1,3 +1,5 @@
+import { Box } from "@chakra-ui/react";
+
 export function CardForm() {
-  return "CardForm";
+  return <Box>CardForm</Box>;
 }
