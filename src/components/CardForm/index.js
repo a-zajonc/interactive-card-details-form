@@ -74,6 +74,7 @@ export function CardForm() {
         </Text>
         <Input
           fontSize="18px"
+          gi
           placeholder="e.g. 123"
           _placeholder={{ color: "#DEDDDF" }}
         />
