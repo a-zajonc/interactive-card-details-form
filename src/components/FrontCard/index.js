@@ -3,7 +3,15 @@ import cardLogo from "./card-logo.svg";
 
 export function FrontCard() {
   return (
-    <Box h="fit-content" width="fit-content" position="relative" color="white">
+    <Box
+      h="fit-content"
+      width="fit-content"
+      position="relative"
+      color="white"
+      marginBottom="20px"
+      boxShadow="2xl"
+      borderRadius="10px"
+    >
       <Image src="bg-card-front.png" alt="Front of the card" />
       <Image
         src={cardLogo}
