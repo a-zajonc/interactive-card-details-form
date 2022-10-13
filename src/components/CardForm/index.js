@@ -1,4 +1,13 @@
-import { Box, Input, Text, Grid, GridItem, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Text,
+  Grid,
+  GridItem,
+  Button,
+  NumberInput,
+  NumberInputField,
+} from "@chakra-ui/react";
 
 export function CardForm({
   cardholderName,
@@ -48,15 +57,16 @@ export function CardForm({
         >
           Card Number
         </Text>
-        <Input
-          fontSize="18px"
-          focusBorderColor="#6448FE"
-          placeholder="e.g. 1234 5678 9123 0000"
-          _placeholder={{ color: "#DEDDDF" }}
-          type="number"
-          value={cardNumber}
-          onChange={(e) => setCardNumber(e.target.value)}
-        />
+        <NumberInput focusBorderColor="#6448FE">
+          <NumberInputField
+            fontSize="18px"
+            placeholder="e.g. 1234 5678 9123 0000"
+            _placeholder={{ color: "#DEDDDF" }}
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+            maxLength="16"
+          />
+        </NumberInput>
       </GridItem>
       <GridItem colSpan={1}>
         <Text
@@ -68,26 +78,26 @@ export function CardForm({
           Exp. date (MM/YY)
         </Text>
         <Box display="flex" flexDirection="row" justifyContent="space-between">
-          <Input
-            w="45%"
-            fontSize="18px"
-            focusBorderColor="#6448FE"
-            placeholder="MM"
-            _placeholder={{ color: "#DEDDDF" }}
-            type="number"
-            value={expMonth}
-            onChange={(e) => setExpMonth(e.target.value)}
-          />
-          <Input
-            w="45%"
-            fontSize="18px"
-            focusBorderColor="#6448FE"
-            placeholder="YY"
-            _placeholder={{ color: "#DEDDDF" }}
-            type="number"
-            value={expYear}
-            onChange={(e) => setExpYear(e.target.value)}
-          />
+          <NumberInput focusBorderColor="#6448FE" w="45%">
+            <NumberInputField
+              fontSize="18px"
+              placeholder="MM"
+              _placeholder={{ color: "#DEDDDF" }}
+              value={expMonth}
+              onChange={(e) => setExpMonth(e.target.value)}
+              maxLength="2"
+            />
+          </NumberInput>
+          <NumberInput focusBorderColor="#6448FE" w="45%">
+            <NumberInputField
+              fontSize="18px"
+              placeholder="YY"
+              _placeholder={{ color: "#DEDDDF" }}
+              value={expYear}
+              onChange={(e) => setExpYear(e.target.value)}
+              maxLength="2"
+            />
+          </NumberInput>
         </Box>
       </GridItem>
       <GridItem colSpan={1} pb="20px">
@@ -99,16 +109,16 @@ export function CardForm({
         >
           CVC
         </Text>
-        <Input
-          fontSize="18px"
-          focusBorderColor="#6448FE"
-          errorBorderColor="#FF5252"
-          placeholder="e.g. 123"
-          _placeholder={{ color: "#DEDDDF" }}
-          type="number"
-          value={cardVerificationCode}
-          onChange={(e) => setCardVerificationCode(e.target.value)}
-        />
+        <NumberInput focusBorderColor="#6448FE" errorBorderColor="#FF5252">
+          <NumberInputField
+            fontSize="18px"
+            placeholder="e.g. 123"
+            _placeholder={{ color: "#DEDDDF" }}
+            value={cardVerificationCode}
+            onChange={(e) => setCardVerificationCode(e.target.value)}
+            maxLength="3"
+          />
+        </NumberInput>
       </GridItem>
       <GridItem colSpan={2}>
         <Button w="100%" h="3rem" bgColor="#21092F" color="white">
