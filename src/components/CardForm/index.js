@@ -1,6 +1,6 @@
 import { Box, Input, Text, Grid, GridItem, Button } from "@chakra-ui/react";
 
-export function CardForm() {
+export function CardForm({ cardholderName, setCardholderName }) {
   return (
     <Grid
       padding="10px"
@@ -22,6 +22,9 @@ export function CardForm() {
           fontSize="18px"
           placeholder="e.g. Jane Appleseed"
           _placeholder={{ color: "#DEDDDF" }}
+          type="text"
+          value={cardholderName}
+          onChange={(e) => setCardholderName(e.target.value)}
         />
       </GridItem>
       <GridItem colSpan={2}>
