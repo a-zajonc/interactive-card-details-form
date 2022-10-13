@@ -1,7 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import cardLogo from "./card-logo.svg";
 
-export function FrontCard() {
+export function FrontCard({ cardholderName }) {
   return (
     <Box
       h="fit-content"
@@ -30,7 +30,7 @@ export function FrontCard() {
         top="80%"
         left="8%"
       >
-        Jane Appleseed
+        {!cardholderName ? "Jane Appleseed" : cardholderName}
       </Text>
       <Text position="absolute" top="80%" right="8%">
         00/00
