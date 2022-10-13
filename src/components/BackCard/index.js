@@ -1,6 +1,6 @@
 import { Box, Img, Text } from "@chakra-ui/react";
 
-export function BackCard() {
+export function BackCard({ cardVerificationCode }) {
   return (
     <Box
       h="fit-content"
@@ -16,7 +16,7 @@ export function BackCard() {
     >
       <Img src="bg-card-back.png" alt="Back of the card" />
       <Text fontSize="18px" position="absolute" top="43%" right="10%">
-        000
+        {!cardVerificationCode ? "000" : cardVerificationCode}
       </Text>
     </Box>
   );

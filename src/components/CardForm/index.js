@@ -1,6 +1,17 @@
 import { Box, Input, Text, Grid, GridItem, Button } from "@chakra-ui/react";
 
-export function CardForm({ cardholderName, setCardholderName }) {
+export function CardForm({
+  cardholderName,
+  setCardholderName,
+  cardNumber,
+  setCardNumber,
+  expMonth,
+  setExpMonth,
+  expYear,
+  setExpYear,
+  cardVerificationCode,
+  setCardVerificationCode,
+}) {
   return (
     <Grid
       padding="10px"
@@ -40,6 +51,9 @@ export function CardForm({ cardholderName, setCardholderName }) {
           fontSize="18px"
           placeholder="e.g. 1234 5678 9123 0000"
           _placeholder={{ color: "#DEDDDF" }}
+          type="number"
+          value={cardNumber}
+          onChange={(e) => setCardNumber(e.target.value)}
         />
       </GridItem>
       <GridItem colSpan={1}>
@@ -57,12 +71,18 @@ export function CardForm({ cardholderName, setCardholderName }) {
             fontSize="18px"
             placeholder="MM"
             _placeholder={{ color: "#DEDDDF" }}
+            type="number"
+            value={expMonth}
+            onChange={(e) => setExpMonth(e.target.value)}
           />
           <Input
             w="45%"
             fontSize="18px"
             placeholder="YY"
             _placeholder={{ color: "#DEDDDF" }}
+            type="number"
+            value={expYear}
+            onChange={(e) => setExpYear(e.target.value)}
           />
         </Box>
       </GridItem>
@@ -77,9 +97,11 @@ export function CardForm({ cardholderName, setCardholderName }) {
         </Text>
         <Input
           fontSize="18px"
-          gi
           placeholder="e.g. 123"
           _placeholder={{ color: "#DEDDDF" }}
+          type="number"
+          value={cardVerificationCode}
+          onChange={(e) => setCardVerificationCode(e.target.value)}
         />
       </GridItem>
       <GridItem colSpan={2}>
