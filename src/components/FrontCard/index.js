@@ -21,7 +21,9 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
         left="8%"
       />
       <Text fontSize="33px" position="absolute" top="50%" left="8%" right="8%">
-        {!cardNumber ? "0000 0000 0000 0000" : cardNumber}
+        {!cardNumber
+          ? "0000 0000 0000 0000"
+          : cardNumber.match(/.{1,4}/g).join(" ")}
       </Text>
       <Text
         fontSize="18px"
