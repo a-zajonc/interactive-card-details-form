@@ -33,6 +33,7 @@ export function CardForm({
           fontSize="18px"
           placeholder="e.g. Jane Appleseed"
           _placeholder={{ color: "#DEDDDF" }}
+          focusBorderColor="#6448FE"
           type="text"
           value={cardholderName}
           onChange={(e) => setCardholderName(e.target.value)}
@@ -49,6 +50,7 @@ export function CardForm({
         </Text>
         <Input
           fontSize="18px"
+          focusBorderColor="#6448FE"
           placeholder="e.g. 1234 5678 9123 0000"
           _placeholder={{ color: "#DEDDDF" }}
           type="number"
@@ -69,6 +71,7 @@ export function CardForm({
           <Input
             w="45%"
             fontSize="18px"
+            focusBorderColor="#6448FE"
             placeholder="MM"
             _placeholder={{ color: "#DEDDDF" }}
             type="number"
@@ -78,6 +81,7 @@ export function CardForm({
           <Input
             w="45%"
             fontSize="18px"
+            focusBorderColor="#6448FE"
             placeholder="YY"
             _placeholder={{ color: "#DEDDDF" }}
             type="number"
@@ -97,6 +101,8 @@ export function CardForm({
         </Text>
         <Input
           fontSize="18px"
+          focusBorderColor="#6448FE"
+          errorBorderColor="#FF5252"
           placeholder="e.g. 123"
           _placeholder={{ color: "#DEDDDF" }}
           type="number"

@@ -4,13 +4,27 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { extendTheme } from "@chakra-ui/react";
 
+import { inputAnatomy } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+
+const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(inputAnatomy.keys);
+
+const baseStyle = definePartsStyle({
+  field: {
+    color: "#21092F",
+  },
+});
+
+export const inputTheme = defineMultiStyleConfig({ baseStyle });
+
 const theme = extendTheme({
   fonts: {
     heading: "Space Grotesk",
     body: "Space Grotesk",
   },
+  components: { Input: inputTheme },
 });
-
 export default theme;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
