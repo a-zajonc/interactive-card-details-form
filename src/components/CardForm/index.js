@@ -16,8 +16,9 @@ export function CardForm({
   setExpYear,
   cardVerificationCode,
   setCardVerificationCode,
+  submit,
+  setSubmit,
 }) {
-  const [submit, setSubmit] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmit(true);
@@ -37,10 +38,10 @@ export function CardForm({
     <form onSubmit={handleSubmit}>
       <Grid
         padding="10px"
-        w="55%"
         templateRows="repeat(4, 1fr)"
         templateColumns="repeat(2, 1fr)"
         gap={4}
+        w="55%"
       >
         <CardholderNameInput
           cardholderName={cardholderName}
