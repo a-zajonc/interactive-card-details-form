@@ -1,7 +1,7 @@
 import { BackCard } from "./BackCard";
 import { FrontCard } from "./FrontCard";
 import { CardForm } from "./CardForm";
-import { Box } from "@chakra-ui/react";
+import { Box, GridItem, Grid } from "@chakra-ui/react";
 import { useState } from "react";
 
 export function CardDetails() {
@@ -13,27 +13,38 @@ export function CardDetails() {
 
   return (
     <Box display="flex" alignItems="center" h="100vh" justifyContent="center">
-      <Box display="flex" flexDirection="column" w="40%">
-        <FrontCard
-          cardholderName={cardholderName}
-          cardNumber={cardNumber}
-          expMonth={expMonth}
-          expYear={expYear}
-        />
-        <BackCard cardVerificationCode={cardVerificationCode} />
-      </Box>
-      <CardForm
-        cardholderName={cardholderName}
-        setCardholderName={setCardholderName}
-        cardNumber={cardNumber}
-        setCardNumber={setCardNumber}
-        expMonth={expMonth}
-        setExpMonth={setExpMonth}
-        expYear={expYear}
-        setExpYear={setExpYear}
-        cardVerificationCode={cardVerificationCode}
-        setCardVerificationCode={setCardVerificationCode}
-      />
+      <Grid
+        templateRows="repeat(2, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        gap={1}
+        marginLeft="10%"
+      >
+        <GridItem colSpan={1} rowSpan={1}>
+          <FrontCard
+            cardholderName={cardholderName}
+            cardNumber={cardNumber}
+            expMonth={expMonth}
+            expYear={expYear}
+          />
+        </GridItem>
+        <GridItem rowSpan={2} colSpan={1} display="flex" alignItems="center">
+          <CardForm
+            cardholderName={cardholderName}
+            setCardholderName={setCardholderName}
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            expMonth={expMonth}
+            setExpMonth={setExpMonth}
+            expYear={expYear}
+            setExpYear={setExpYear}
+            cardVerificationCode={cardVerificationCode}
+            setCardVerificationCode={setCardVerificationCode}
+          />
+        </GridItem>
+        <GridItem colSpan={1} rowSpan={1}>
+          <BackCard cardVerificationCode={cardVerificationCode} />
+        </GridItem>
+      </Grid>
     </Box>
   );
 }

@@ -1,13 +1,9 @@
-import {
-  Box,
-  Input,
-  Text,
-  Grid,
-  GridItem,
-  Button,
-  NumberInput,
-  NumberInputField,
-} from "@chakra-ui/react";
+import { Grid, GridItem, Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { CardholderNameInput } from "./CardholderNameInput";
+import { CardNumberInput } from "./CardNumberInput";
+import { CardVerificationCodeInput } from "./CardVerificationCodeInput";
+import { ExpDateInput } from "./ExpDateInput";
 
 export function CardForm({
   cardholderName,
@@ -21,110 +17,69 @@ export function CardForm({
   cardVerificationCode,
   setCardVerificationCode,
 }) {
+  const [submit, setSubmit] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmit(true);
+  };
+
+  const isValidName = cardholderName.length === 0 ? false : true;
+
+  const isValidCardNumber = cardNumber.length < 16 ? false : true;
+
+  const isValidCVC = cardVerificationCode.length < 3 ? false : true;
+
+  function isValidExp(period) {
+    return period.length < 2 ? false : true;
+  }
+
   return (
-    <Grid
-      padding="10px"
-      w="25%"
-      templateRows="repeat(4, 1fr)"
-      templateColumns="repeat(2, 1fr)"
-      gap={4}
-    >
-      <GridItem colSpan={2}>
-        <Text
-          color="#21092F"
-          fontSize="15px"
-          textTransform="uppercase"
-          pb="10px"
-        >
-          Cardholder Name
-        </Text>
-        <Input
-          fontSize="18px"
-          placeholder="e.g. Jane Appleseed"
-          _placeholder={{ color: "#DEDDDF" }}
-          focusBorderColor="#6448FE"
-          type="text"
-          value={cardholderName}
-          onChange={(e) => setCardholderName(e.target.value)}
+    <form onSubmit={handleSubmit}>
+      <Grid
+        padding="10px"
+        w="55%"
+        templateRows="repeat(4, 1fr)"
+        templateColumns="repeat(2, 1fr)"
+        gap={4}
+      >
+        <CardholderNameInput
+          cardholderName={cardholderName}
+          setCardholderName={setCardholderName}
+          submit={submit}
+          isValidName={isValidName}
         />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <Text
-          color="#21092F"
-          fontSize="15px"
-          textTransform="uppercase"
-          pb="10px"
-        >
-          Card Number
-        </Text>
-        <NumberInput focusBorderColor="#6448FE">
-          <NumberInputField
-            fontSize="18px"
-            placeholder="e.g. 1234 5678 9123 0000"
-            _placeholder={{ color: "#DEDDDF" }}
-            value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
-            maxLength="16"
-          />
-        </NumberInput>
-      </GridItem>
-      <GridItem colSpan={1}>
-        <Text
-          color="#21092F"
-          fontSize="15px"
-          textTransform="uppercase"
-          pb="10px"
-        >
-          Exp. date (MM/YY)
-        </Text>
-        <Box display="flex" flexDirection="row" justifyContent="space-between">
-          <NumberInput focusBorderColor="#6448FE" w="45%">
-            <NumberInputField
-              fontSize="18px"
-              placeholder="MM"
-              _placeholder={{ color: "#DEDDDF" }}
-              value={expMonth}
-              onChange={(e) => setExpMonth(e.target.value)}
-              maxLength="2"
-            />
-          </NumberInput>
-          <NumberInput focusBorderColor="#6448FE" w="45%">
-            <NumberInputField
-              fontSize="18px"
-              placeholder="YY"
-              _placeholder={{ color: "#DEDDDF" }}
-              value={expYear}
-              onChange={(e) => setExpYear(e.target.value)}
-              maxLength="2"
-            />
-          </NumberInput>
-        </Box>
-      </GridItem>
-      <GridItem colSpan={1} pb="20px">
-        <Text
-          color="#21092F"
-          fontSize="15px"
-          textTransform="uppercase"
-          pb="10px"
-        >
-          CVC
-        </Text>
-        <NumberInput focusBorderColor="#6448FE" errorBorderColor="#FF5252">
-          <NumberInputField
-            fontSize="18px"
-            placeholder="e.g. 123"
-            _placeholder={{ color: "#DEDDDF" }}
-            value={cardVerificationCode}
-            onChange={(e) => setCardVerificationCode(e.target.value)}
-            maxLength="3"
-          />
-        </NumberInput>
-      </GridItem>
-      <GridItem colSpan={2}>
-        <Button w="100%" h="3rem" bgColor="#21092F" color="white">
-          Confirm
-        </Button>
-      </GridItem>
-    </Grid>
+        <CardNumberInput
+          cardNumber={cardNumber}
+          setCardNumber={setCardNumber}
+          submit={submit}
+          isValidCardNumber={isValidCardNumber}
+        />
+        <ExpDateInput
+          expMonth={expMonth}
+          expYear={expYear}
+          setExpMonth={setExpMonth}
+          setExpYear={setExpYear}
+          submit={submit}
+          isValidExp={isValidExp}
+        />
+        <CardVerificationCodeInput
+          cardVerificationCode={cardVerificationCode}
+          setCardVerificationCode={setCardVerificationCode}
+          submit={submit}
+          isValidCVC={isValidCVC}
+        />
+        <GridItem colSpan={2}>
+          <Button
+            w="100%"
+            h="3rem"
+            bgColor="#21092F"
+            color="white"
+            type="submit"
+          >
+            Confirm
+          </Button>
+        </GridItem>
+      </Grid>
+    </form>
   );
 }
