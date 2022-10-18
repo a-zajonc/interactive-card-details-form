@@ -4,13 +4,15 @@ import cardLogo from "./card-logo.svg";
 export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
   return (
     <Box
+      display="flex"
+      justifyContent="flex-start"
       h="fit-content"
       width="fit-content"
       position="relative"
       color="white"
-      marginBottom="20px"
       boxShadow="2xl"
       borderRadius="10px"
+      marginBottom="15px"
     >
       <Image src="bg-card-front.png" alt="Front of the card" />
       <Image
