@@ -5,7 +5,10 @@ import theme from ".";
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box bgImg="bg-main-desktop.png" backgroundRepeat="repeat-y">
+      <Box
+        bgImg={{ sm: "bg-main-mobile.png", md: "bg-main-desktop.png" }}
+        backgroundRepeat={{ sm: "repeat-x", md: "repeat-y" }}
+      >
         <CardDetails />
       </Box>
     </ChakraProvider>

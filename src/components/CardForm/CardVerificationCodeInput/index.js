@@ -7,7 +7,7 @@ export function CardVerificationCodeInput({
   isValidCVC,
 }) {
   return (
-    <GridItem colSpan={1} pb="20px">
+    <GridItem colSpan={1} pb="20px" marginLeft="10%">
       <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
         CVC
       </Text>

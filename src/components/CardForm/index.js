@@ -1,5 +1,4 @@
 import { Grid, GridItem, Button } from "@chakra-ui/react";
-import { useState } from "react";
 import { CardholderNameInput } from "./CardholderNameInput";
 import { CardNumberInput } from "./CardNumberInput";
 import { CardVerificationCodeInput } from "./CardVerificationCodeInput";
@@ -42,11 +41,14 @@ export function CardForm({
   return (
     <form onSubmit={handleSubmit}>
       <Grid
-        padding="10px"
+        padding={{ sm: "20px", lg: "10px" }}
         templateRows="repeat(4, 1fr)"
         templateColumns="repeat(2, 1fr)"
-        gap={4}
-        w="55%"
+        gap={0}
+        w={{
+          sm: "100%",
+          lg: "55%",
+        }}
       >
         <CardholderNameInput
           cardholderName={cardholderName}
@@ -81,6 +83,7 @@ export function CardForm({
             bgColor="#21092F"
             color="white"
             type="submit"
+            marginTop="2%"
           >
             Confirm
           </Button>
