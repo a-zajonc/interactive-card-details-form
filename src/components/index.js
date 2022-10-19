@@ -12,6 +12,7 @@ export function CardDetails() {
   const [expYear, setExpYear] = useState("");
   const [cardVerificationCode, setCardVerificationCode] = useState("");
   const [submit, setSubmit] = useState("");
+  const [valid, setValid] = useState("");
 
   return (
     <Box display="flex" alignItems="center" h="100vh" justifyContent="center">
@@ -37,7 +38,7 @@ export function CardDetails() {
           alignItems="center"
           w="100%"
         >
-          {submit === true ? (
+          {submit === true && valid === true ? (
             <SuccessInfo />
           ) : (
             <CardForm
@@ -53,6 +54,8 @@ export function CardDetails() {
               setCardVerificationCode={setCardVerificationCode}
               submit={submit}
               setSubmit={setSubmit}
+              valid={valid}
+              setValid={setValid}
             />
           )}
         </GridItem>
