@@ -18,10 +18,15 @@ export function CardForm({
   setCardVerificationCode,
   submit,
   setSubmit,
+  valid,
+  setValid,
 }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmit(true);
+    isValidName && isValidCardNumber && isValidCVC === true
+      ? setValid(true)
+      : setValid(false);
   };
 
   const isValidName = cardholderName.length === 0 ? false : true;
