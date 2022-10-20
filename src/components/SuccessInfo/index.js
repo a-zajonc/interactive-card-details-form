@@ -6,14 +6,17 @@ export function SuccessInfo() {
     <Box
       display="flex"
       flexDirection="column"
-      h={["75%", "75%", "75%", "70%", "45%"]}
+      h={{
+        sm: "70%",
+        xl: "55%",
+      }}
       alignItems="center"
       justifyContent={[
+        "space-between",
+        "space-between",
+        "space-between",
+        "space-between",
         "space-evenly",
-        "space-evenly",
-        "space-evenly",
-        "space-around",
-        "space-around",
       ]}
       w={{ sm: "100%", xl: "50%" }}
     >

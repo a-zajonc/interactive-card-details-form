@@ -7,7 +7,7 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
       display="flex"
       justifyContent="flex-end"
       width="fit-content"
-      position={["absolute", "absolute", "absolute", "absolute", "relative"]}
+      position="relative"
       color="white"
       padding="10px"
       marginTop={["100px", "100px", "100px", "50px ", "0%"]}
