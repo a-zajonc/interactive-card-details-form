@@ -23,6 +23,7 @@ export function CardNumberInput({
         value={cardNumber}
         onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
         maxLength="16"
+        inputMode="decimal"
         isValid={isValidCardNumber}
       />
       <Box fontSize="12px" color="#FF5252" marginTop="5px">

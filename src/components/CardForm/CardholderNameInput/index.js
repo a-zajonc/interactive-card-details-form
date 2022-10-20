@@ -23,6 +23,7 @@ export function CardholderNameInput({
         value={cardholderName}
         onChange={(e) => setCardholderName(e.target.value.replace(/\d/g, ""))}
         isValid={isValidName}
+        inputMode="decimal"
       />
       <Box fontSize="12px" color="#FF5252" marginTop="5px">
         {submit & (isValidName === false) ? "Can't be empty" : null}

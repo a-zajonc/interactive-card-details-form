@@ -25,6 +25,7 @@ export function CardVerificationCodeInput({
           setCardVerificationCode(e.target.value.replace(/\D/g, ""))
         }
         maxLength="3"
+        inputMode="decimal"
         isValid={isValidCVC}
       />
       <Box fontSize="12px" color="#FF5252" marginTop="5px">
