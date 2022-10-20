@@ -17,19 +17,30 @@ export function CardDetails() {
   return (
     <Box
       display="flex"
-      flexDirection={{ sm: "column", md: "column", xl: "row" }}
+      flexDirection={["column", "column", "column", "column", "row"]}
       alignItems="center"
       h="100vh"
       justifyContent="space-between"
     >
       <Box
         display="flex"
-        flexDirection={{ sm: "column", md: "column", xl: "column-reverse" }}
+        flexDirection={{
+          sm: "column",
+          md: "column",
+          lg: "column",
+          xl: "column-reverse",
+        }}
         justifyItems="center"
         w="100%"
-        h="500px"
+        h={["500px", "500px", "500px", "500px", "fit-content"]}
         alignItems="center"
-        justifyContent={{ sm: "flex-start", md: "flex-start", xl: "center" }}
+        justifyContent={[
+          "flex-start",
+          "flex-start",
+          "flex-start",
+          "flex-start",
+          "center",
+        ]}
         marginRight={{ xl: "30px" }}
       >
         <BackCard cardVerificationCode={cardVerificationCode} />

@@ -6,29 +6,25 @@ export function SuccessInfo() {
     <Box
       display="flex"
       flexDirection="column"
-      h={{ sm: "75%", md: "75%", lg: "70%", xl: "45%" }}
+      h={["75%", "75%", "75%", "70%", "45%"]}
       alignItems="center"
-      justifyContent={{
-        sm: "space-evenly",
-        lg: "space-around",
-        xl: "space-around",
-      }}
+      justifyContent={[
+        "space-evenly",
+        "space-evenly",
+        "space-evenly",
+        "space-around",
+        "space-around",
+      ]}
       w={{ sm: "100%", xl: "50%" }}
     >
       <Img src={iconComplete} alt="Icon Complete" h="100px" w="100px" />
       <Heading textTransform="uppercase" color="#21092F" fontWeight="500">
         Thank you!
       </Heading>
-      <Text color="#8E8593" fontSize="18px">
+      <Text color="#8E8593" fontSize="18px" textAlign="center">
         We've added your card details
       </Text>
-      <Button
-        w={{ sm: "90%", xl: "100%" }}
-        h="3rem"
-        bgColor="#21092F"
-        color="white"
-        type="submit"
-      >
+      <Button w={{ sm: "90%", xl: "100%" }} variant="primary" type="submit">
         Continue
       </Button>
     </Box>
