@@ -1,4 +1,4 @@
-import { Text, GridItem, Input, Box } from "@chakra-ui/react";
+import { Text, Input, Box } from "@chakra-ui/react";
 
 export function CardholderNameInput({
   cardholderName,
@@ -7,7 +7,7 @@ export function CardholderNameInput({
   isValidName,
 }) {
   return (
-    <GridItem colSpan={2}>
+    <Box>
       <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
         Cardholder Name
       </Text>
@@ -28,6 +28,6 @@ export function CardholderNameInput({
       <Box fontSize="12px" color="#FF5252" marginTop="5px">
         {submit & (isValidName === false) ? "Can't be empty" : null}
       </Box>
-    </GridItem>
+    </Box>
   );
 }

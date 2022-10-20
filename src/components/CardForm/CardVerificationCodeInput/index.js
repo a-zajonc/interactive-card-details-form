@@ -1,4 +1,4 @@
-import { GridItem, Box, Input, Text } from "@chakra-ui/react";
+import { Box, Input, Text } from "@chakra-ui/react";
 
 export function CardVerificationCodeInput({
   cardVerificationCode,
@@ -7,7 +7,7 @@ export function CardVerificationCodeInput({
   isValidCVC,
 }) {
   return (
-    <GridItem colSpan={1} marginLeft="10%">
+    <Box marginLeft="10%">
       <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
         CVC
       </Text>
@@ -40,6 +40,6 @@ export function CardVerificationCodeInput({
           ? "Can't be blank"
           : null}
       </Box>
-    </GridItem>
+    </Box>
   );
 }

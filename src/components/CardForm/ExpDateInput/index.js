@@ -1,4 +1,4 @@
-import { Text, Box, Input, GridItem } from "@chakra-ui/react";
+import { Text, Box, Input } from "@chakra-ui/react";
 
 export function ExpDateInput({
   expMonth,
@@ -9,7 +9,7 @@ export function ExpDateInput({
   isValidExp,
 }) {
   return (
-    <GridItem colSpan={1}>
+    <Box>
       <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
         Exp. date (MM/YY)
       </Text>
@@ -61,6 +61,6 @@ export function ExpDateInput({
           ? "Can't be blank"
           : null}
       </Box>
-    </GridItem>
+    </Box>
   );
 }

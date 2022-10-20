@@ -1,4 +1,4 @@
-import { GridItem, Box, Text, Input } from "@chakra-ui/react";
+import { Box, Text, Input } from "@chakra-ui/react";
 
 export function CardNumberInput({
   cardNumber,
@@ -7,7 +7,7 @@ export function CardNumberInput({
   submit,
 }) {
   return (
-    <GridItem colSpan={2}>
+    <Box>
       <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
         Card Number
       </Text>
@@ -34,6 +34,6 @@ export function CardNumberInput({
       <Box fontSize="12px" color="#FF5252" marginTop="5px">
         {cardNumber.length === 0 && submit === true ? "Can't be empty" : null}
       </Box>
-    </GridItem>
+    </Box>
   );
 }
