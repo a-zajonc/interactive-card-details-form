@@ -17,17 +17,20 @@ export function CardDetails() {
   return (
     <Box
       display="flex"
-      flexDirection={{ sm: "column", lg: "row" }}
+      flexDirection={{ sm: "column", md: "column", xl: "row" }}
       alignItems="center"
       h="100vh"
-      justifyContent={{ sm: "space-between", lg: "center" }}
+      justifyContent="space-between"
     >
       <Box
         display="flex"
-        flexDirection={{ sm: "column", lg: "column-reverse" }}
+        flexDirection={{ sm: "column", md: "column", xl: "column-reverse" }}
         justifyItems="center"
         w="100%"
+        h="500px"
         alignItems="center"
+        justifyContent={{ sm: "flex-start", md: "flex-start", xl: "center" }}
+        marginRight={{ xl: "30px" }}
       >
         <BackCard cardVerificationCode={cardVerificationCode} />
         <FrontCard
@@ -39,9 +42,9 @@ export function CardDetails() {
       </Box>
       <Box
         display="flex"
-        alignItems={{ sm: "baseline", lg: "center" }}
-        w={{ lg: "100%" }}
-        h="57%"
+        alignItems={{ sm: "baseline", xl: "center" }}
+        w={{ xl: "100%" }}
+        h="inherit"
       >
         {submit === true && valid === true ? (
           <SuccessInfo />
