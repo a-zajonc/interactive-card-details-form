@@ -29,6 +29,7 @@ export function ExpDateInput({
           value={expMonth}
           onChange={(e) => setExpMonth(e.target.value.replace(/\D/g, ""))}
           maxLength="2"
+          inputMode="decimal"
           isValid={isValidExp(expMonth)}
         />
         <Input
@@ -46,6 +47,7 @@ export function ExpDateInput({
           value={expYear}
           onChange={(e) => setExpYear(e.target.value.replace(/\D/g, ""))}
           maxLength="2"
+          inputMode="decimal"
           isValid={isValidExp(expYear)}
         />
       </Box>
