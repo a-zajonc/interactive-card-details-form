@@ -1,4 +1,9 @@
-import { Box, Text, Input } from "@chakra-ui/react";
+import {
+  Input,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
 export function CardNumberInput({
   cardNumber,
@@ -7,16 +12,13 @@ export function CardNumberInput({
   submit,
 }) {
   return (
-    <Box>
-      <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
+    <FormControl isInvalid={cardNumber.length < 16 && submit} mb="10px">
+      <FormLabel color="#21092F" fontSize="15px" textTransform="uppercase">
         Card Number
-      </Text>
+      </FormLabel>
       <Input
         type="text"
         focusBorderColor="#6448FE"
-        borderColor={
-          isValidCardNumber === false && submit === true ? "#FF5252" : "inherit"
-        }
         fontSize="18px"
         placeholder="e.g. 1234 5678 9123 0000"
         _placeholder={{ color: "#DEDDDF" }}
@@ -26,14 +28,7 @@ export function CardNumberInput({
         inputMode="decimal"
         isValid={isValidCardNumber}
       />
-      <Box fontSize="12px" color="#FF5252" marginTop="5px">
-        {cardNumber.length < 16 && cardNumber.length > 0 && submit === true
-          ? "Number is to short"
-          : null}
-      </Box>
-      <Box fontSize="12px" color="#FF5252" marginTop="5px">
-        {cardNumber.length === 0 && submit === true ? "Can't be empty" : null}
-      </Box>
-    </Box>
+      <FormErrorMessage>Number is to short</FormErrorMessage>
+    </FormControl>
   );
 }

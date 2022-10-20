@@ -1,4 +1,10 @@
-import { Text, Box, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
 export function ExpDateInput({
   expMonth,
@@ -9,18 +15,21 @@ export function ExpDateInput({
   isValidExp,
 }) {
   return (
-    <Box>
-      <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
+    <FormControl
+      isInvalid={
+        submit &&
+        (isValidExp(expYear) === false ||
+          isValidExp(expMonth) === false ||
+          expMonth > 12)
+      }
+      mb="10px"
+    >
+      <FormLabel color="#21092F" fontSize="15px" textTransform="uppercase">
         Exp. date (MM/YY)
-      </Text>
+      </FormLabel>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Input
           type="text"
-          borderColor={
-            isValidExp(expMonth) === false && submit === true
-              ? "#FF5252"
-              : "inherit"
-          }
           focusBorderColor="#6448FE"
           w="45%"
           fontSize="18px"
@@ -51,16 +60,19 @@ export function ExpDateInput({
           isValid={isValidExp(expYear)}
         />
       </Box>
-      <Box fontSize="11px" color="#FF5252" marginTop="5px">
+      <FormErrorMessage>
+        {expMonth > 12 && submit ? "Month number is incorrect" : null}
+      </FormErrorMessage>
+      <FormErrorMessage>
         {(expMonth.length === 1 || expYear.length === 1) && submit
           ? "Number is too short"
           : null}
-      </Box>
-      <Box fontSize="11px" color="#FF5252" marginTop="5px">
+      </FormErrorMessage>
+      <FormErrorMessage>
         {(expMonth.length === 0 || expYear.length === 0) && submit
           ? "Can't be blank"
           : null}
-      </Box>
-    </Box>
+      </FormErrorMessage>
+    </FormControl>
   );
 }
