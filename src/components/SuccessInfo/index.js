@@ -6,10 +6,14 @@ export function SuccessInfo() {
     <Box
       display="flex"
       flexDirection="column"
-      h={{ sm: "100%", lg: "70%" }}
+      h={{ sm: "75%", md: "75%", lg: "70%", xl: "45%" }}
       alignItems="center"
-      justifyContent={{ sm: "space-evenly", lg: "space-around" }}
-      w={{ sm: "100%", lg: "50%" }}
+      justifyContent={{
+        sm: "space-evenly",
+        lg: "space-around",
+        xl: "space-around",
+      }}
+      w={{ sm: "100%", xl: "50%" }}
     >
       <Img src={iconComplete} alt="Icon Complete" h="100px" w="100px" />
       <Heading textTransform="uppercase" color="#21092F" fontWeight="500">
@@ -19,7 +23,7 @@ export function SuccessInfo() {
         We've added your card details
       </Text>
       <Button
-        w={{ sm: "90%", lg: "100%" }}
+        w={{ sm: "90%", xl: "100%" }}
         h="3rem"
         bgColor="#21092F"
         color="white"

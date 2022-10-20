@@ -1,4 +1,4 @@
-import { Grid, GridItem, Button } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Button } from "@chakra-ui/react";
 import { CardholderNameInput } from "./CardholderNameInput";
 import { CardNumberInput } from "./CardNumberInput";
 import { CardVerificationCodeInput } from "./CardVerificationCodeInput";
@@ -41,14 +41,17 @@ export function CardForm({
   return (
     <form onSubmit={handleSubmit}>
       <Grid
-        padding={{ sm: "20px", lg: "10px" }}
+        display="flex"
+        flexDirection="column"
+        padding="10px"
         templateRows="repeat(4, 1fr)"
         templateColumns="repeat(2, 1fr)"
-        gap={0}
+        gap={1}
         w={{
           sm: "100%",
-          lg: "55%",
+          xl: "55%",
         }}
+        minW={{ sm: "200px", md: "400px", lg: "400px", xl: "400px" }}
       >
         <CardholderNameInput
           cardholderName={cardholderName}
@@ -62,20 +65,22 @@ export function CardForm({
           submit={submit}
           isValidCardNumber={isValidCardNumber}
         />
-        <ExpDateInput
-          expMonth={expMonth}
-          expYear={expYear}
-          setExpMonth={setExpMonth}
-          setExpYear={setExpYear}
-          submit={submit}
-          isValidExp={isValidExp}
-        />
-        <CardVerificationCodeInput
-          cardVerificationCode={cardVerificationCode}
-          setCardVerificationCode={setCardVerificationCode}
-          submit={submit}
-          isValidCVC={isValidCVC}
-        />
+        <Box display="flex" flexDirection="row">
+          <ExpDateInput
+            expMonth={expMonth}
+            expYear={expYear}
+            setExpMonth={setExpMonth}
+            setExpYear={setExpYear}
+            submit={submit}
+            isValidExp={isValidExp}
+          />
+          <CardVerificationCodeInput
+            cardVerificationCode={cardVerificationCode}
+            setCardVerificationCode={setCardVerificationCode}
+            submit={submit}
+            isValidCVC={isValidCVC}
+          />
+        </Box>
         <GridItem colSpan={2}>
           <Button
             w="100%"
@@ -83,7 +88,7 @@ export function CardForm({
             bgColor="#21092F"
             color="white"
             type="submit"
-            marginTop="2%"
+            marginTop="25px"
           >
             Confirm
           </Button>
