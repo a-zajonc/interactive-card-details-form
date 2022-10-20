@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { CardholderNameInput } from "./CardholderNameInput";
 import { CardNumberInput } from "./CardNumberInput";
 import { CardVerificationCodeInput } from "./CardVerificationCodeInput";
@@ -17,7 +17,6 @@ export function CardForm({
   setCardVerificationCode,
   submit,
   setSubmit,
-  valid,
   setValid,
 }) {
   const handleSubmit = (event) => {
@@ -40,12 +39,10 @@ export function CardForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid
+      <Box
         display="flex"
         flexDirection="column"
         padding="10px"
-        templateRows="repeat(4, 1fr)"
-        templateColumns="repeat(2, 1fr)"
         gap={1}
         w={{
           sm: "100%",
@@ -81,12 +78,12 @@ export function CardForm({
             isValidCVC={isValidCVC}
           />
         </Box>
-        <GridItem colSpan={2}>
+        <Box>
           <Button w="100%" variant="primary" type="submit" marginTop="25px">
             Confirm
           </Button>
-        </GridItem>
-      </Grid>
+        </Box>
+      </Box>
     </form>
   );
 }
