@@ -51,7 +51,7 @@ export function CardForm({
           sm: "100%",
           xl: "55%",
         }}
-        minW={{ sm: "200px", md: "400px", lg: "400px", xl: "400px" }}
+        minW={["200px", "200px", "400px", "400px", "400px"]}
       >
         <CardholderNameInput
           cardholderName={cardholderName}
@@ -82,14 +82,7 @@ export function CardForm({
           />
         </Box>
         <GridItem colSpan={2}>
-          <Button
-            w="100%"
-            h="3rem"
-            bgColor="#21092F"
-            color="white"
-            type="submit"
-            marginTop="25px"
-          >
+          <Button w="100%" variant="primary" type="submit" marginTop="25px">
             Confirm
           </Button>
         </GridItem>

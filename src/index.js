@@ -18,6 +18,30 @@ const theme = extendTheme({
     body: "Space Grotesk",
   },
   breakpoints,
+  components: {
+    Input: {
+      variants: {
+        primary: {
+          field: {
+            fontSize: "18px",
+            fontFamily: "Space Grotesk",
+            _placeholder: { color: "#DEDDDF" },
+            border: "1px solid",
+            color: "#DEDDDF",
+          },
+        },
+      },
+    },
+    Button: {
+      variants: {
+        primary: {
+          color: "white",
+          bgColor: "#21092F",
+          h: "3rem",
+        },
+      },
+    },
+  },
 });
 export default theme;
 
