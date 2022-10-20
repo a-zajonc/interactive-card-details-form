@@ -1,4 +1,9 @@
-import { Box, Input, Text } from "@chakra-ui/react";
+import {
+  FormErrorMessage,
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
 
 export function CardVerificationCodeInput({
   cardVerificationCode,
@@ -7,15 +12,16 @@ export function CardVerificationCodeInput({
   isValidCVC,
 }) {
   return (
-    <Box marginLeft="10%">
-      <Text color="#21092F" fontSize="15px" textTransform="uppercase" pb="10px">
+    <FormControl
+      marginLeft="7%"
+      isInvalid={cardVerificationCode.length < 3 && submit}
+      mb="10px"
+    >
+      <FormLabel color="#21092F" fontSize="15px" textTransform="uppercase">
         CVC
-      </Text>
+      </FormLabel>
       <Input
         type="text"
-        borderColor={
-          isValidCVC === false && submit === true ? "#FF5252" : "inherit"
-        }
         focusBorderColor="#6448FE"
         fontSize="18px"
         placeholder="e.g. 123"
@@ -28,18 +34,16 @@ export function CardVerificationCodeInput({
         inputMode="decimal"
         isValid={isValidCVC}
       />
-      <Box fontSize="12px" color="#FF5252" marginTop="5px">
+      <FormErrorMessage>
         {cardVerificationCode.length < 3 &&
         cardVerificationCode.length > 0 &&
         submit === true
           ? "Number is too short"
-          : null}
-      </Box>
-      <Box fontSize="12px" color="#FF5252" marginTop="5px">
+          : null}{" "}
         {cardVerificationCode.length === 0 && submit === true
           ? "Can't be blank"
           : null}
-      </Box>
-    </Box>
+      </FormErrorMessage>
+    </FormControl>
   );
 }

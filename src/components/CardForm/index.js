@@ -22,7 +22,12 @@ export function CardForm({
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmit(true);
-    isValidName && isValidCardNumber && isValidCVC === true
+    isValidExp(expYear) &&
+    isValidExp(expMonth) &&
+    expMonth < 13 &&
+    isValidName &&
+    isValidCardNumber &&
+    isValidCVC === true
       ? setValid(true)
       : setValid(false);
   };
@@ -79,7 +84,7 @@ export function CardForm({
           />
         </Box>
         <Box>
-          <Button w="100%" variant="primary" type="submit" marginTop="25px">
+          <Button w="100%" variant="primary" type="submit" mt="10px">
             Confirm
           </Button>
         </Box>

@@ -1,7 +1,5 @@
 import { Box, Img, Text } from "@chakra-ui/react";
 
-//Poprawić odległość formularza od kart
-
 export function BackCard({ cardVerificationCode }) {
   return (
     <Box
