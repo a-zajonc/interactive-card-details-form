@@ -1,5 +1,5 @@
 import { ChakraProvider, Box } from "@chakra-ui/react";
-import { CardDetails } from "./components";
+import { CardDetails } from "./components/";
 import theme from ".";
 import bgCardMobile from "./images/bg-main-mobile.png";
 import bgDesktopMobile from "./images/bg-main-desktop.png";
