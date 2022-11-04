@@ -1,4 +1,5 @@
 import { Box, Img, Text } from "@chakra-ui/react";
+import cardBack from "../../images/bg-card-back.png";
 
 export function BackCard({ cardVerificationCode }) {
   return (
@@ -11,7 +12,7 @@ export function BackCard({ cardVerificationCode }) {
       marginLeft={["15%", "15%", "20%", "35%", "13%"]}
     >
       <Img
-        src="bg-card-back.png"
+        src={cardBack}
         alt="Back of the card"
         boxShadow="2xl"
         borderRadius="10px"
