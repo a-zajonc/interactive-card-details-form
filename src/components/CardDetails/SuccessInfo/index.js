@@ -11,13 +11,10 @@ export function SuccessInfo() {
         xl: "55%",
       }}
       alignItems="center"
-      justifyContent={[
-        "space-between",
-        "space-between",
-        "space-between",
-        "space-between",
-        "space-evenly",
-      ]}
+      justifyContent={{
+        base: "space-between",
+        xl: "space-evenly",
+      }}
       w={{ sm: "100%", xl: "50%" }}
     >
       <Img src={iconComplete} alt="Icon Complete" h="100px" w="100px" />

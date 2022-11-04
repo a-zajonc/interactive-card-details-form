@@ -9,13 +9,10 @@ function App() {
     <ChakraProvider theme={theme}>
       <Box
         bgImg={{ sm: bgCardMobile, xl: bgDesktopMobile }}
-        backgroundRepeat={[
-          "repeat-x",
-          "repeat-x",
-          "repeat-x",
-          "repeat-x",
-          "repeat-y",
-        ]}
+        backgroundRepeat={{
+          base: "repeat-x",
+          xl: "repeat-y",
+        }}
       >
         <CardDetails />
       </Box>
