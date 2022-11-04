@@ -1,5 +1,6 @@
 import { Box, Img, Text } from "@chakra-ui/react";
 import cardLogo from "./card-logo.svg";
+import cardFront from "../../images/bg-card-front.png";
 
 export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
   return (
@@ -14,7 +15,7 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
       marginRight={["15%", "15%", "20%", "35%", "0%"]}
     >
       <Img
-        src="bg-card-front.png"
+        src={cardFront}
         alt="Front of the card"
         boxShadow="2xl"
         borderRadius="10px"
