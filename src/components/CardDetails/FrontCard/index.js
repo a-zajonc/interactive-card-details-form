@@ -11,27 +11,27 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
       position="relative"
       color="white"
       padding="10px"
-      marginTop={["100px", "100px", "100px", "50px ", "0%"]}
-      marginRight={["15%", "15%", "20%", "35%", "0%"]}
+      marginTop={{ base: "100px", lg: "50px ", xl: "0%" }}
+      marginRight={{ base: "15%", md: "20%", lg: "35%", xl: "0%" }}
     >
       <Img
         src={cardFrontImage}
         alt="Front of the card"
         boxShadow="2xl"
         borderRadius="10px"
-        h={["150px", "150px,", "180px", "220px", "245px"]}
+        h={{ base: "150px", md: "180px", lg: "220px", xl: "245px" }}
       />
       <Img
         src={cardLogo}
         alt="Card Logo"
-        width={["30", "30", "50", "50", "84"]}
-        height={["6", "6", "8", "47", "47"]}
+        width={{ base: "30", md: "50", lg: "50", xl: "84" }}
+        height={{ base: "6", md: "8", lg: "47", xl: "47" }}
         position="absolute"
         top="10%"
         left="8%"
       />
       <Text
-        fontSize={["22px", "22px", "25px", "30px", "33px"]}
+        fontSize={{ base: "22px", md: "25px", lg: "30px", xl: "33px" }}
         position="absolute"
         top="50%"
         left="8%"
@@ -42,7 +42,7 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
           : cardNumber.match(/.{1,4}/g).join(" ")}
       </Text>
       <Text
-        fontSize={["12px", "12px", "15px", "17px", "18px"]}
+        fontSize={{ base: "12px", md: "15px", lg: "17px", xl: "18px" }}
         textTransform="uppercase"
         position="absolute"
         top={{ sm: "75%", xl: "80%" }}
@@ -51,7 +51,7 @@ export function FrontCard({ cardholderName, cardNumber, expMonth, expYear }) {
         {!cardholderName ? "Jane Appleseed" : cardholderName}
       </Text>
       <Text
-        fontSize={["12px", "12px", "15px", "17px", "18px"]}
+        fontSize={{ base: "12px", md: "15px", lg: "17px", xl: "18px" }}
         position="absolute"
         top={{ sm: "75%", xl: "80%" }}
         right="8%"

@@ -53,7 +53,7 @@ export function CardForm({
           sm: "100%",
           xl: "55%",
         }}
-        minW={["200px", "200px", "400px", "400px", "400px"]}
+        minW={{ base: "200px", md: "400px" }}
       >
         <CardholderNameInput
           cardholderName={cardholderName}

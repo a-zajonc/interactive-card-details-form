@@ -17,7 +17,7 @@ export function CardDetails() {
   return (
     <Box
       display="flex"
-      flexDirection={["column", "column", "column", "column", "row"]}
+      flexDirection={{ base: "column", xl: "row" }}
       alignItems="center"
       h="100vh"
       justifyContent="space-between"
