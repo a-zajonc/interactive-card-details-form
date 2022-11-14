@@ -4,17 +4,18 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import { UserCardDetailsContext } from "../../context";
+import { useContext } from "react";
 
-export function CardVerificationCodeInput({
-  cardVerificationCode,
-  setCardVerificationCode,
-  submit,
-  isValidCVC,
-}) {
+export function CardVerificationCodeInput({ submit, isValidCVC }) {
+  const [userCardDetails, setUserCardDetails] = useContext(
+    UserCardDetailsContext
+  );
+
   return (
     <FormControl
       marginLeft="7%"
-      isInvalid={cardVerificationCode.length < 3 && submit}
+      isInvalid={userCardDetails.cardVerificationCode.length < 3 && submit}
       mb="10px"
     >
       <FormLabel color="#21092F" fontSize="15px" textTransform="uppercase">
@@ -26,21 +27,24 @@ export function CardVerificationCodeInput({
         fontSize="18px"
         placeholder="e.g. 123"
         _placeholder={{ color: "#DEDDDF" }}
-        value={cardVerificationCode}
+        value={userCardDetails.cardVerificationCode}
         onChange={(e) =>
-          setCardVerificationCode(e.target.value.replace(/\D/g, ""))
+          setUserCardDetails({
+            ...userCardDetails,
+            cardVerificationCode: e.target.value.replace(/\D/g, ""),
+          })
         }
         maxLength="3"
         inputMode="decimal"
         isValid={isValidCVC}
       />
       <FormErrorMessage>
-        {cardVerificationCode.length < 3 &&
-        cardVerificationCode.length > 0 &&
+        {userCardDetails.cardVerificationCode.length < 3 &&
+        userCardDetails.cardVerificationCode.length > 0 &&
         submit === true
           ? "Number is too short"
           : null}{" "}
-        {cardVerificationCode.length === 0 && submit === true
+        {userCardDetails.cardVerificationCode.length === 0 && submit === true
           ? "Can't be blank"
           : null}
       </FormErrorMessage>

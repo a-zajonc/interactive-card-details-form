@@ -4,15 +4,19 @@ import { CardForm } from "./CardForm";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { SuccessInfo } from "./SuccessInfo";
+import { UserCardDetailsContext } from "./context";
 
 export function CardDetails() {
-  const [cardholderName, setCardholderName] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [expMonth, setExpMonth] = useState("");
-  const [expYear, setExpYear] = useState("");
-  const [cardVerificationCode, setCardVerificationCode] = useState("");
   const [submit, setSubmit] = useState("");
   const [valid, setValid] = useState("");
+
+  const [userCardDetails, setUserCardDetails] = useState({
+    cardholderName: "",
+    cardNumber: "",
+    cardVerificationCode: "",
+    expMonth: "",
+    expYear: "",
+  });
 
   return (
     <Box
@@ -43,13 +47,10 @@ export function CardDetails() {
         ]}
         marginRight={{ xl: "30px" }}
       >
-        <BackCard cardVerificationCode={cardVerificationCode} />
-        <FrontCard
-          cardholderName={cardholderName}
-          cardNumber={cardNumber}
-          expMonth={expMonth}
-          expYear={expYear}
-        />
+        <UserCardDetailsContext.Provider value={userCardDetails}>
+          <BackCard />
+          <FrontCard />
+        </UserCardDetailsContext.Provider>
       </Box>
       <Box
         display="flex"
@@ -60,22 +61,16 @@ export function CardDetails() {
         {submit === true && valid === true ? (
           <SuccessInfo />
         ) : (
-          <CardForm
-            cardholderName={cardholderName}
-            setCardholderName={setCardholderName}
-            cardNumber={cardNumber}
-            setCardNumber={setCardNumber}
-            expMonth={expMonth}
-            setExpMonth={setExpMonth}
-            expYear={expYear}
-            setExpYear={setExpYear}
-            cardVerificationCode={cardVerificationCode}
-            setCardVerificationCode={setCardVerificationCode}
-            submit={submit}
-            setSubmit={setSubmit}
-            valid={valid}
-            setValid={setValid}
-          />
+          <UserCardDetailsContext.Provider
+            value={[userCardDetails, setUserCardDetails]}
+          >
+            <CardForm
+              submit={submit}
+              setSubmit={setSubmit}
+              valid={valid}
+              setValid={setValid}
+            />
+          </UserCardDetailsContext.Provider>
         )}
       </Box>
     </Box>
