@@ -4,10 +4,10 @@ import {
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useContext } from "react";
 import { UserCardDetailsContext } from "../../context";
+import { useContext } from "react";
 
-export function CardNumberInput({ isValidCardNumber, submit }) {
+export function CardNumberInput({ submit }) {
   const [userCardDetails, setUserCardDetails] = useContext(
     UserCardDetailsContext
   );
@@ -34,7 +34,7 @@ export function CardNumberInput({ isValidCardNumber, submit }) {
         }
         maxLength="16"
         inputMode="decimal"
-        isValid={isValidCardNumber}
+        isValid={userCardDetails.cardNumber.length < 16}
       />
       <FormErrorMessage>Number is to short</FormErrorMessage>
     </FormControl>

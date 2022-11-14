@@ -18,6 +18,7 @@ export function CardDetails() {
     expYear: "",
   });
 
+  console.log(userCardDetails);
   return (
     <Box
       display="flex"
@@ -58,7 +59,7 @@ export function CardDetails() {
         w={{ xl: "100%" }}
         h="inherit"
       >
-        {submit === true && valid === true ? (
+        {submit && valid ? (
           <SuccessInfo />
         ) : (
           <UserCardDetailsContext.Provider
