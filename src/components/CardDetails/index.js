@@ -58,7 +58,7 @@ export function CardDetails() {
         w={{ xl: "100%" }}
         h="inherit"
       >
-        {submit === true && valid === true ? (
+        {submit && valid ? (
           <SuccessInfo />
         ) : (
           <UserCardDetailsContext.Provider

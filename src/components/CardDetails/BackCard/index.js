@@ -28,7 +28,7 @@ export function BackCard() {
         top={{ base: "45%", md: "43%", lg: "45%", xl: "44%" }}
         right="15%"
       >
-        {!userData.cardVerificationCode ? "000" : userData.cardVerificationCode}
+        {userData.cardVerificationCode ? userData.cardVerificationCode : "000"}
       </Text>
     </Box>
   );

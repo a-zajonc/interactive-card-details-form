@@ -7,33 +7,26 @@ import { useContext } from "react";
 import { UserCardDetailsContext } from "../context";
 
 export function CardForm({ submit, setSubmit, setValid }) {
+  const [userCardDetails] = useContext(UserCardDetailsContext);
+
+  const isValidExpDate =
+    userCardDetails.expYear.length === 2 &&
+    userCardDetails.expMonth.length === 2 &&
+    userCardDetails.expMonth < 13;
+
+  const isValidName = userCardDetails.cardholderName.length > 0;
+
+  const isValidCardNumber = userCardDetails.cardNumber.length === 16;
+
+  const isValidCVC = userCardDetails.cardVerificationCode.length === 3;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmit(true);
-    isValidExp(userCardDetails.expYear) &&
-    isValidExp(userCardDetails.expMonth) &&
-    userCardDetails.expMonth < 13 &&
-    isValidName &&
-    isValidCardNumber &&
-    isValidCVC === true
+    isValidExpDate && isValidName && isValidCardNumber && isValidCVC
       ? setValid(true)
       : setValid(false);
   };
-
-  const [userCardDetails] = useContext(UserCardDetailsContext);
-
-  const isValidName =
-    userCardDetails.cardholderName.length === 0 ? false : true;
-
-  const isValidCardNumber =
-    userCardDetails.cardNumber.length < 16 ? false : true;
-
-  const isValidCVC =
-    userCardDetails.cardVerificationCode.length < 3 ? false : true;
-
-  function isValidExp(period) {
-    return period.length < 2 ? false : true;
-  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -48,14 +41,14 @@ export function CardForm({ submit, setSubmit, setValid }) {
         }}
         minW={{ base: "200px", md: "400px" }}
       >
-        <CardholderNameInput submit={submit} isValidName={isValidName} />
+        <CardholderNameInput submit={submit} />
         <CardNumberInput
           submit={submit}
           isValidCardNumber={isValidCardNumber}
         />
         <Box display="flex" flexDirection="row">
-          <ExpDateInput submit={submit} isValidExp={isValidExp} />
-          <CardVerificationCodeInput submit={submit} isValidCVC={isValidCVC} />
+          <ExpDateInput submit={submit} />
+          <CardVerificationCodeInput submit={submit} />
         </Box>
         <Box>
           <Button w="100%" variant="primary" type="submit" mt="10px">

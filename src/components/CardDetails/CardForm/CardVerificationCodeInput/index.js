@@ -7,7 +7,7 @@ import {
 import { UserCardDetailsContext } from "../../context";
 import { useContext } from "react";
 
-export function CardVerificationCodeInput({ submit, isValidCVC }) {
+export function CardVerificationCodeInput({ submit }) {
   const [userCardDetails, setUserCardDetails] = useContext(
     UserCardDetailsContext
   );
@@ -36,15 +36,15 @@ export function CardVerificationCodeInput({ submit, isValidCVC }) {
         }
         maxLength="3"
         inputMode="decimal"
-        isValid={isValidCVC}
+        isValid={userCardDetails.cardVerificationCode.length < 3}
       />
       <FormErrorMessage>
         {userCardDetails.cardVerificationCode.length < 3 &&
         userCardDetails.cardVerificationCode.length > 0 &&
-        submit === true
+        submit
           ? "Number is too short"
-          : null}{" "}
-        {userCardDetails.cardVerificationCode.length === 0 && submit === true
+          : null}
+        {userCardDetails.cardVerificationCode.length === 0 && submit
           ? "Can't be blank"
           : null}
       </FormErrorMessage>

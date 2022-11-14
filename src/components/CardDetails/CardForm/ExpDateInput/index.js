@@ -8,7 +8,7 @@ import {
 import { useContext } from "react";
 import { UserCardDetailsContext } from "../../context";
 
-export function ExpDateInput({ submit, isValidExp }) {
+export function ExpDateInput({ submit }) {
   const [userCardDetails, setUserCardDetails] = useContext(
     UserCardDetailsContext
   );
@@ -16,8 +16,8 @@ export function ExpDateInput({ submit, isValidExp }) {
     <FormControl
       isInvalid={
         submit &&
-        (isValidExp(userCardDetails.expYear) === false ||
-          isValidExp(userCardDetails.expMonth) === false ||
+        (userCardDetails.expYear.length < 2 ||
+          userCardDetails.expMonth.length < 2 ||
           userCardDetails.expMonth > 12)
       }
       mb="10px"
@@ -42,12 +42,12 @@ export function ExpDateInput({ submit, isValidExp }) {
           }
           maxLength="2"
           inputMode="decimal"
-          isValid={isValidExp(userCardDetails.expMonth)}
+          isValid={userCardDetails.expMonth.length === 2}
         />
         <Input
           type="text"
           borderColor={
-            isValidExp(userCardDetails.expYear) === false && submit === true
+            userCardDetails.expYear.length !== 2 && submit
               ? "#FF5252"
               : "inherit"
           }
@@ -65,27 +65,29 @@ export function ExpDateInput({ submit, isValidExp }) {
           }
           maxLength="2"
           inputMode="decimal"
-          isValid={isValidExp(userCardDetails.expYear)}
+          isValid={userCardDetails.expYear.length === 2}
         />
       </Box>
-      <FormErrorMessage>
-        {userCardDetails.expMonth > 12 && submit
-          ? "Month number is incorrect"
-          : null}
-      </FormErrorMessage>
-      <FormErrorMessage>
-        {(userCardDetails.expMonth.length === 1 ||
-          userCardDetails.expYear.length === 1) &&
-        submit
-          ? "Number is too short"
-          : null}
-      </FormErrorMessage>
-      <FormErrorMessage>
-        {(userCardDetails.expMonth.length === 0 ||
-          userCardDetails.expYear.length === 0) &&
-        submit
-          ? "Can't be blank"
-          : null}
+      <FormErrorMessage flexDirection="column" alignItems="flex-start">
+        <Box>
+          {userCardDetails.expMonth > 12 && submit
+            ? "Month number is incorrect"
+            : null}
+        </Box>
+        <Box>
+          {(userCardDetails.expMonth.length === 1 ||
+            userCardDetails.expYear.length === 1) &&
+          submit
+            ? "Number is too short"
+            : null}
+        </Box>
+        <Box>
+          {(userCardDetails.expMonth.length === 0 ||
+            userCardDetails.expYear.length === 0) &&
+          submit
+            ? "Can't be blank"
+            : null}
+        </Box>
       </FormErrorMessage>
     </FormControl>
   );
