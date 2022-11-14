@@ -18,7 +18,6 @@ export function CardDetails() {
     expYear: "",
   });
 
-  console.log(userCardDetails);
   return (
     <Box
       display="flex"
