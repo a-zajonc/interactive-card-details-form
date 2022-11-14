@@ -5,22 +5,20 @@ import {
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { UserCardDetailsContext } from "../../context";
 
-export function ExpDateInput({
-  expMonth,
-  expYear,
-  setExpMonth,
-  setExpYear,
-  submit,
-  isValidExp,
-}) {
+export function ExpDateInput({ submit, isValidExp }) {
+  const [userCardDetails, setUserCardDetails] = useContext(
+    UserCardDetailsContext
+  );
   return (
     <FormControl
       isInvalid={
         submit &&
-        (isValidExp(expYear) === false ||
-          isValidExp(expMonth) === false ||
-          expMonth > 12)
+        (isValidExp(userCardDetails.expYear) === false ||
+          isValidExp(userCardDetails.expMonth) === false ||
+          userCardDetails.expMonth > 12)
       }
       mb="10px"
     >
@@ -35,16 +33,21 @@ export function ExpDateInput({
           fontSize="18px"
           placeholder="MM"
           _placeholder={{ color: "#DEDDDF" }}
-          value={expMonth}
-          onChange={(e) => setExpMonth(e.target.value.replace(/\D/g, ""))}
+          value={userCardDetails.expMonth}
+          onChange={(e) =>
+            setUserCardDetails({
+              ...userCardDetails,
+              expMonth: e.target.value.replace(/\D/g, ""),
+            })
+          }
           maxLength="2"
           inputMode="decimal"
-          isValid={isValidExp(expMonth)}
+          isValid={isValidExp(userCardDetails.expMonth)}
         />
         <Input
           type="text"
           borderColor={
-            isValidExp(expYear) === false && submit === true
+            isValidExp(userCardDetails.expYear) === false && submit === true
               ? "#FF5252"
               : "inherit"
           }
@@ -53,23 +56,34 @@ export function ExpDateInput({
           fontSize="18px"
           placeholder="YY"
           _placeholder={{ color: "#DEDDDF" }}
-          value={expYear}
-          onChange={(e) => setExpYear(e.target.value.replace(/\D/g, ""))}
+          value={userCardDetails.expYear}
+          onChange={(e) =>
+            setUserCardDetails({
+              ...userCardDetails,
+              expYear: e.target.value.replace(/\D/g, ""),
+            })
+          }
           maxLength="2"
           inputMode="decimal"
-          isValid={isValidExp(expYear)}
+          isValid={isValidExp(userCardDetails.expYear)}
         />
       </Box>
       <FormErrorMessage>
-        {expMonth > 12 && submit ? "Month number is incorrect" : null}
+        {userCardDetails.expMonth > 12 && submit
+          ? "Month number is incorrect"
+          : null}
       </FormErrorMessage>
       <FormErrorMessage>
-        {(expMonth.length === 1 || expYear.length === 1) && submit
+        {(userCardDetails.expMonth.length === 1 ||
+          userCardDetails.expYear.length === 1) &&
+        submit
           ? "Number is too short"
           : null}
       </FormErrorMessage>
       <FormErrorMessage>
-        {(expMonth.length === 0 || expYear.length === 0) && submit
+        {(userCardDetails.expMonth.length === 0 ||
+          userCardDetails.expYear.length === 0) &&
+        submit
           ? "Can't be blank"
           : null}
       </FormErrorMessage>

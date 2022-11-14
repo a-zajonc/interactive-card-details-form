@@ -4,15 +4,18 @@ import {
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { UserCardDetailsContext } from "../../context";
 
-export function CardNumberInput({
-  cardNumber,
-  setCardNumber,
-  isValidCardNumber,
-  submit,
-}) {
+export function CardNumberInput({ isValidCardNumber, submit }) {
+  const [userCardDetails, setUserCardDetails] = useContext(
+    UserCardDetailsContext
+  );
   return (
-    <FormControl isInvalid={cardNumber.length < 16 && submit} mb="10px">
+    <FormControl
+      isInvalid={userCardDetails.cardNumber.length < 16 && submit}
+      mb="10px"
+    >
       <FormLabel color="#21092F" fontSize="15px" textTransform="uppercase">
         Card Number
       </FormLabel>
@@ -22,8 +25,13 @@ export function CardNumberInput({
         fontSize="18px"
         placeholder="e.g. 1234 5678 9123 0000"
         _placeholder={{ color: "#DEDDDF" }}
-        value={cardNumber}
-        onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
+        value={userCardDetails.cardNumber}
+        onChange={(e) =>
+          setUserCardDetails({
+            ...userCardDetails,
+            cardNumber: e.target.value.replace(/\D/g, ""),
+          })
+        }
         maxLength="16"
         inputMode="decimal"
         isValid={isValidCardNumber}
