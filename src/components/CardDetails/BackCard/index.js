@@ -1,10 +1,9 @@
 import { Box, Img, Text } from "@chakra-ui/react";
 import cardBackImage from "../../../images/bg-card-back.png";
-import { useContext } from "react";
-import { UserCardDetailsContext } from "../context";
+import { useUserContext } from "../../../context";
 
 export function BackCard() {
-  const userData = useContext(UserCardDetailsContext);
+  const { userCardDetails } = useUserContext();
 
   return (
     <Box
@@ -28,7 +27,9 @@ export function BackCard() {
         top={{ base: "45%", md: "43%", lg: "45%", xl: "44%" }}
         right="15%"
       >
-        {userData.cardVerificationCode ? userData.cardVerificationCode : "000"}
+        {userCardDetails.cardVerificationCode
+          ? userCardDetails.cardVerificationCode
+          : "000"}
       </Text>
     </Box>
   );
