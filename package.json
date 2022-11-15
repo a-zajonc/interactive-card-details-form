@@ -1,7 +1,6 @@
 {
   "name": "interactive-card-details-form",
   "version": "0.1.0",
-  "homepage": "https://a-zajonc.github.io/interactive-card-details-form",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.3.5",
