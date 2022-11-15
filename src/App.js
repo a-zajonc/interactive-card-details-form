@@ -3,8 +3,18 @@ import { CardDetails } from "./components/";
 import theme from ".";
 import bgCardMobile from "./images/bg-main-mobile.png";
 import bgDesktopMobile from "./images/bg-main-desktop.png";
+import { UserCardDetailsContext } from "./context";
+import { useState } from "react";
 
 function App() {
+  const [userCardDetails, setUserCardDetails] = useState({
+    cardholderName: "",
+    cardNumber: "",
+    cardVerificationCode: "",
+    expMonth: "",
+    expYear: "",
+  });
+
   return (
     <ChakraProvider theme={theme}>
       <Box
@@ -14,7 +24,11 @@ function App() {
           xl: "repeat-y",
         }}
       >
-        <CardDetails />
+        <UserCardDetailsContext.Provider
+          value={{ userCardDetails, setUserCardDetails }}
+        >
+          <CardDetails />
+        </UserCardDetailsContext.Provider>
       </Box>
     </ChakraProvider>
   );

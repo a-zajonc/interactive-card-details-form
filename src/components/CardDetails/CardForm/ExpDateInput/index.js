@@ -5,13 +5,10 @@ import {
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useContext } from "react";
-import { UserCardDetailsContext } from "../../context";
+import { useUserContext } from "../../../../context";
 
 export function ExpDateInput({ submit }) {
-  const [userCardDetails, setUserCardDetails] = useContext(
-    UserCardDetailsContext
-  );
+  const { userCardDetails, setUserCardDetails } = useUserContext();
   return (
     <FormControl
       isInvalid={

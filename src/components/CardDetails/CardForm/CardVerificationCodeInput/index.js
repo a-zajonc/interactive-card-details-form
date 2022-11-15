@@ -4,13 +4,10 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { UserCardDetailsContext } from "../../context";
-import { useContext } from "react";
+import { useUserContext } from "../../../../context";
 
 export function CardVerificationCodeInput({ submit }) {
-  const [userCardDetails, setUserCardDetails] = useContext(
-    UserCardDetailsContext
-  );
+  const { userCardDetails, setUserCardDetails } = useUserContext();
 
   return (
     <FormControl

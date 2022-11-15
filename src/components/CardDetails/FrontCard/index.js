@@ -1,11 +1,10 @@
 import { Box, Img, Text } from "@chakra-ui/react";
 import cardLogo from "./card-logo.svg";
 import cardFrontImage from "../../../images/bg-card-front.png";
-import { useContext } from "react";
-import { UserCardDetailsContext } from "../context";
+import { useUserContext } from "../../../context";
 
 export function FrontCard() {
-  const userData = useContext(UserCardDetailsContext);
+  const { userCardDetails } = useUserContext();
 
   return (
     <Box
@@ -41,9 +40,9 @@ export function FrontCard() {
         left="8%"
         right="8%"
       >
-        {!userData.cardNumber
+        {!userCardDetails.cardNumber
           ? "0000 0000 0000 0000"
-          : userData.cardNumber.match(/.{1,4}/g).join(" ")}
+          : userCardDetails.cardNumber.match(/.{1,4}/g).join(" ")}
       </Text>
       <Text
         fontSize={{ base: "12px", md: "15px", lg: "17px", xl: "18px" }}
@@ -52,7 +51,9 @@ export function FrontCard() {
         top={{ sm: "75%", xl: "80%" }}
         left="8%"
       >
-        {!userData.cardholderName ? "Jane Appleseed" : userData.cardholderName}
+        {!userCardDetails.cardholderName
+          ? "Jane Appleseed"
+          : userCardDetails.cardholderName}
       </Text>
       <Text
         fontSize={{ base: "12px", md: "15px", lg: "17px", xl: "18px" }}
@@ -60,8 +61,8 @@ export function FrontCard() {
         top={{ sm: "75%", xl: "80%" }}
         right="8%"
       >
-        {!userData.expMonth ? "00" : userData.expMonth}/
-        {!userData.expYear ? "00" : userData.expYear}
+        {!userCardDetails.expMonth ? "00" : userCardDetails.expMonth}/
+        {!userCardDetails.expYear ? "00" : userCardDetails.expYear}
       </Text>
     </Box>
   );

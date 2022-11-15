@@ -3,11 +3,10 @@ import { CardholderNameInput } from "./CardholderNameInput";
 import { CardNumberInput } from "./CardNumberInput";
 import { CardVerificationCodeInput } from "./CardVerificationCodeInput";
 import { ExpDateInput } from "./ExpDateInput";
-import { useContext } from "react";
-import { UserCardDetailsContext } from "../context";
+import { useUserContext } from "../../../context";
 
 export function CardForm({ submit, setSubmit, setValid }) {
-  const [userCardDetails] = useContext(UserCardDetailsContext);
+  const { userCardDetails } = useUserContext();
 
   const isValidExpDate =
     userCardDetails.expYear.length === 2 &&

@@ -4,13 +4,11 @@ import {
   FormLabel,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { UserCardDetailsContext } from "../../context";
-import { useContext } from "react";
+import { useUserContext } from "../../../../context";
 
 export function CardNumberInput({ submit }) {
-  const [userCardDetails, setUserCardDetails] = useContext(
-    UserCardDetailsContext
-  );
+  const { userCardDetails, setUserCardDetails } = useUserContext();
+
   return (
     <FormControl
       isInvalid={userCardDetails.cardNumber.length < 16 && submit}

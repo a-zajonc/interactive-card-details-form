@@ -4,19 +4,10 @@ import { CardForm } from "./CardForm";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { SuccessInfo } from "./SuccessInfo";
-import { UserCardDetailsContext } from "./context";
 
 export function CardDetails() {
   const [submit, setSubmit] = useState("");
   const [valid, setValid] = useState("");
-
-  const [userCardDetails, setUserCardDetails] = useState({
-    cardholderName: "",
-    cardNumber: "",
-    cardVerificationCode: "",
-    expMonth: "",
-    expYear: "",
-  });
 
   return (
     <Box
@@ -47,10 +38,8 @@ export function CardDetails() {
         ]}
         marginRight={{ xl: "30px" }}
       >
-        <UserCardDetailsContext.Provider value={userCardDetails}>
-          <BackCard />
-          <FrontCard />
-        </UserCardDetailsContext.Provider>
+        <BackCard />
+        <FrontCard />
       </Box>
       <Box
         display="flex"
@@ -61,16 +50,12 @@ export function CardDetails() {
         {submit && valid ? (
           <SuccessInfo />
         ) : (
-          <UserCardDetailsContext.Provider
-            value={[userCardDetails, setUserCardDetails]}
-          >
-            <CardForm
-              submit={submit}
-              setSubmit={setSubmit}
-              valid={valid}
-              setValid={setValid}
-            />
-          </UserCardDetailsContext.Provider>
+          <CardForm
+            submit={submit}
+            setSubmit={setSubmit}
+            valid={valid}
+            setValid={setValid}
+          />
         )}
       </Box>
     </Box>
